@@ -11,8 +11,6 @@ import (
 func Day2(s string) (int, int, error) {
 	arr := strings.Split(s, "x")
 
-	area := 0
-
 	l, err := strconv.Atoi(arr[0])
 	if err != nil {
 		return 0, 0, fmt.Errorf("could not convert: %s", err)
@@ -29,36 +27,27 @@ func Day2(s string) (int, int, error) {
 	}
 
 	var a_sides []int
-	a_sides = append(a_sides, l*w)
-	a_sides = append(a_sides, w*h)
-	a_sides = append(a_sides, l*h)
+	a_sides = append(a_sides, l)
+	a_sides = append(a_sides, w)
+	a_sides = append(a_sides, h)
 
-	area += 2 * (a_sides[0] + a_sides[1] + a_sides[2])
-
-	min_side_area := 10000
+	first := 10000
+	second := 10000
 
 	for i := 0; i < len(a_sides); i++ {
-		if min_side_area > a_sides[i] {
-			min_side_area = a_sides[i]
+		if a_sides[i] < first {
+			second = first
+			first = a_sides[i]
+		} else if a_sides[i] < second && a_sides[i] != first {
+			second = a_sides[i]
 		}
 	}
 
-	area += min_side_area
+	fmt.Println(first)
+	fmt.Println(second)
 
-	ribbonlength := 0
-	var p_sides []int
-	p_sides = append(p_sides, l+w)
-	p_sides = append(p_sides, w+h)
-	p_sides = append(p_sides, l+h)
-
-	min_side_p := 10000
-	for i := 0; i < len(p_sides); i++ {
-		if min_side_p > p_sides[i] {
-			min_side_p = p_sides[i]
-		}
-	}
-
-	ribbonlength += (2 * min_side_p) + (l * w * h)
+	area := (2 * l * w) + (2 * w * h) + (2 * l * h) + first*second
+	ribbonlength := 2*(first+second) + l*w*h
 
 	return area, ribbonlength, nil
 }
