@@ -57,3 +57,25 @@ func TestDayTwo(t *testing.T) {
 	fmt.Println(ribbon)
 
 }
+
+func TestDayThree(t *testing.T) {
+	file := "testdata/day3.txt"
+
+	h, err := os.Open(file)
+	if err != nil {
+		t.Fatal("error while opening file", err)
+	}
+	defer h.Close()
+
+	scan := bufio.NewScanner(h)
+
+	r := make(map[Coordinate]int)
+	for scan.Scan() {
+		r, err = Day3(scan.Text())
+		if err != nil {
+			t.Fatal("could not read data", err)
+		}
+	}
+
+	fmt.Println(len(r))
+}
