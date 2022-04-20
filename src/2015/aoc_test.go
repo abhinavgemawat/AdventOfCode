@@ -83,3 +83,25 @@ func TestDay3(t *testing.T) {
 func TestDay4(t *testing.T) {
 	fmt.Println(Day4("bgvyzdsv"))
 }
+
+func TestDay5(t *testing.T) {
+	file := "testdata/day5.txt"
+
+	h, err := os.Open(file)
+	if err != nil {
+		t.Fatal("error while opening file", err)
+	}
+	defer h.Close()
+
+	scan := bufio.NewScanner(h)
+
+	counter := 0
+	for scan.Scan() {
+		r := Day5Part1(scan.Text())
+		if r {
+			counter++
+		}
+	}
+
+	fmt.Println(counter)
+}
