@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestDayOne(t *testing.T) {
+func TestDay1(t *testing.T) {
 	file := "testdata/day1.txt"
 
 	h, err := os.Open(file)
@@ -25,7 +25,7 @@ func TestDayOne(t *testing.T) {
 	fmt.Println(basementchar)
 }
 
-func TestDayTwo(t *testing.T) {
+func TestDay2(t *testing.T) {
 	file := "testdata/day2.txt"
 
 	h, err := os.Open(file)
@@ -58,7 +58,7 @@ func TestDayTwo(t *testing.T) {
 
 }
 
-func TestDayThree(t *testing.T) {
+func TestDay3(t *testing.T) {
 	file := "testdata/day3.txt"
 
 	h, err := os.Open(file)
@@ -78,4 +78,8 @@ func TestDayThree(t *testing.T) {
 	}
 
 	fmt.Println(len(r))
+}
+
+func TestDay4(t *testing.T) {
+	fmt.Println(Day4("bgvyzdsv"))
 }
