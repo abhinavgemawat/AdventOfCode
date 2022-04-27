@@ -2,11 +2,16 @@ package src
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"testing"
 )
 
+func CmpInt(expected int, actual int) bool {
+	if expected == actual {
+		return true
+	}
+	return false
+}
 func TestDay1(t *testing.T) {
 	file := "testdata/day1.txt"
 
@@ -21,8 +26,9 @@ func TestDay1(t *testing.T) {
 	for scan.Scan() {
 		floor, basementchar = Day1(scan.Text())
 	}
-	fmt.Println(floor)
-	fmt.Println(basementchar)
+
+	CmpInt(280, floor)
+	CmpInt(1797, basementchar)
 }
 
 func TestDay2(t *testing.T) {
@@ -53,8 +59,8 @@ func TestDay2(t *testing.T) {
 		ribbon += trib[i]
 	}
 
-	fmt.Println(area)
-	fmt.Println(ribbon)
+	CmpInt(1709812, area)
+	CmpInt(3863354, ribbon)
 
 }
 
@@ -77,11 +83,15 @@ func TestDay3(t *testing.T) {
 		}
 	}
 
-	fmt.Println(len(r))
+	CmpInt(2360, len(r))
 }
 
 func TestDay4(t *testing.T) {
-	fmt.Println(Day4("bgvyzdsv"))
+	v, err := Day4("bgvyzdsv")
+	if err != nil {
+		t.Fatal("could not execute day 4")
+	}
+	CmpInt(1038736, v)
 }
 
 func TestDay5(t *testing.T) {
@@ -103,5 +113,5 @@ func TestDay5(t *testing.T) {
 		}
 	}
 
-	fmt.Println(counter)
+	CmpInt(258, counter)
 }

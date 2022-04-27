@@ -64,9 +64,6 @@ func Day2(s string) (int, int, error) {
 		}
 	}
 
-	fmt.Println(first)
-	fmt.Println(second)
-
 	area := (2 * l * w) + (2 * w * h) + (2 * l * h) + first*second
 	ribbonlength := 2*(first+second) + l*w*h
 
@@ -190,4 +187,9 @@ func Day5Part1(s string) bool {
 		return true
 	}
 	return false
+}
+
+/*--- Day 6: Probably a Fire Hazard ---*/
+
+func Day6(s string) {
 }
